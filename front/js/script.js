@@ -1,35 +1,35 @@
-/* Je cherche dans le document l'élément qui va recevoir mes produits et l'assigne dans une constante nommée itemsList */
+/* Searching in the document for the element that will contain the products and assigning it in a constant named itemsList */
 const itemsList = document.getElementById('items');
 
-/* Je me connecte à l'API grâce à fetch() */
+/* Connecting to the API with fetch() */
 fetch('http://localhost:3000/api/products')
 .then(response => response.json())
 .then(products => {
 
-    /* Grâce à une boucle for, je parcours les données renvoyées par l'API */    
+    /* Browsing the data returned by the API with a for loop */    
     for (i = 0; i < products.length; i++){
-        /* Je crée mon élément productLink (a), je renseigne son attribut href et le déclare enfant de mon élément itemsList */
+        /* Creating productLink (a) element, setting href attribute and defining it as child of the itemsList element */
         let productLink = document.createElement("a");
-        productLink.setAttribute("href", "product.html?id="+products[i]._id);
+        productLink.setAttribute("href", `product.html?id=${products[i]._id}`);
         itemsList.appendChild(productLink);
 
-        /* Je crée mon élément productArticle (article) et le déclare enfant de mon élément productLink */
+        /* Creating productArticle (article) element and defining it as child of the productLink element */
         let productArticle = document.createElement("article");
         productLink.appendChild(productArticle);
 
-        /* Je crée mon élément productImg (img), lui assigne ses attributs src et alt et le déclare enfant de mon élément productArticle */
+        /* Creating productImg (img) element, setting src and alt attributes and declaring it as child of the productArticle element */
         let productImg = document.createElement("img");
         productImg.setAttribute("src", products[i].imageUrl);
         productImg.setAttribute("alt", products[i].altTxt);
         productArticle.appendChild(productImg);
 
-        /* Je crée mon élément productName (h3), lui ajoute la classe productName, son contenu textuel et le déclare enfant de mon élément productArticle */
+        /* Creating productName (h3) element, adding the productName class and textual content and declaring it as child of the productArticle element */ 
         let productName = document.createElement("h3");
         productName.classList.add("productName");
         productName.textContent = products[i].name;
         productArticle.appendChild(productName);
 
-        /* Je crée mon élément productDescription (p), lui ajoute la classe productDescription, son contenu textuel et le déclare enfant de mon élément productArticle */
+        /* Creating productDescription (p) element, adding the productDescription class and textual content and declaring it as child of the productArticle element */
         let productDescription = document.createElement("p");
         productDescription.classList.add("productDescription");
         productDescription.textContent = products[i].description;
