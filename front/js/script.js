@@ -7,7 +7,7 @@ fetch('http://localhost:3000/api/products')
 .then(products => {
 
     /* Browsing the data returned by the API with a for loop */    
-    for (i = 0; i < products.length; i++){
+    for (let i = 0; i < products.length; i++){
         /* Creating productLink (a) element, setting href attribute and defining it as child of the itemsList element */
         let productLink = document.createElement("a");
         productLink.setAttribute("href", `product.html?id=${products[i]._id}`);
