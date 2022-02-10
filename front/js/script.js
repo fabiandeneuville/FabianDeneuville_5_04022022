@@ -7,7 +7,7 @@ fetch('http://localhost:3000/api/products')
     /* Returning the response in a JSON format */
 .then(response => response.json())
     /* Defining API response as Products and setting action to be executed */
-.then(products => { /*....*/
+.then(products => { 
 
     /* Browsing the data returned by the API with a for loop */    
     for (let i = 0; i < products.length; i++){
