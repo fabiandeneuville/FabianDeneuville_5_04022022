@@ -49,5 +49,7 @@ fetch('http://localhost:3000/api/products')
     errorMessage.style.color = "red";
     errorMessage.style.backgroundColor = "white";
     errorMessage.style.padding = "15px";
+    errorMessage.style.borderRadius = "25px";
+    errorMessage.style.border = "2px solid red";
     itemsList.appendChild(errorMessage);
 })
