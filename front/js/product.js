@@ -1,3 +1,5 @@
+/********** DESPLAYING PRODUCT ELEMENTS ON THE PRODUCT PAGE **********/
+
 /* Searching in the document for the elements that will contain the product details (name, description, price, image, color options ...) */
 const itemPresentation = document.querySelector(".item")
 const itemContent = document.querySelector("article");
@@ -62,3 +64,32 @@ fetch(`http://localhost:3000/api/products/${productId}`)
     productErrorMessage.style.border = "2px solid red";
     itemPresentation.appendChild(productErrorMessage);
 })
+
+
+
+/********** SETTINGS OF THE ADD TO CART ACTION *********/
+
+/* Defining cart as an array */
+let cart = [];
+
+/* Searching in the document for the addToCart button and assigning it in a constant named addToCartBtn */
+const addToCartBtn = document.getElementById("addToCart");
+
+/* Selection of the #quantity and #colors elements and assigining them into variables*/
+let quantity = document.getElementById("quantity");
+let color = document.getElementById("colors");
+
+/* Listening to click event on the addToCartBtn and setting action to be executed */
+addToCartBtn.addEventListener("click", function addToCart(){
+    /* Inserting productId into cart array */
+    cart.push(productId);
+    /* Checking if the choice of color and quadity has been made and IF YES : inserting color and quantity choices into cart array and displaying a succes message - IF NOT : Displaying an alert */
+    if (color.value !== "" && quantity.value > 0 && quantity.value <= 100){
+        cart.push(color.value);
+        cart.push(quantity.value);
+        alert("Votre choix a bien été effectué et votre article a été ajouté à votre panier.")
+    } else {
+        alert("Veuillez sélectionner une couleur et indiquer la quantité souhaitée.");
+    }
+    console.log(cart);
+});
