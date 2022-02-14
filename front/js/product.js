@@ -81,12 +81,17 @@ let color = document.getElementById("colors");
 
 /* Listening to click event on the addToCartBtn and setting action to be executed */
 addToCartBtn.addEventListener("click", function addToCart(){
-    /* Inserting productId into cart array */
-    cart.push(productId);
-    /* Checking if the choice of color and quadity has been made and IF YES : inserting color and quantity choices into cart array and displaying a succes message - IF NOT : Displaying an alert */
+
+    let colorPicked = (color.value);
+    let quantityPicked = (quantity.value);
+
     if (color.value !== "" && quantity.value > 0 && quantity.value <= 100){
-        cart.push(color.value);
-        cart.push(quantity.value);
+        let orderProduct = {
+            id : productId,
+            color : colorPicked,
+            quantity : quantityPicked
+            }
+        cart.push(orderProduct);
         alert("Votre choix a bien été effectué et votre article a été ajouté à votre panier.")
     } else {
         alert("Veuillez sélectionner une couleur et indiquer la quantité souhaitée.");
