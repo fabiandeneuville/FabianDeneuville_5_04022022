@@ -9,6 +9,12 @@ const itemPrice = document.getElementById("price");
 const itemDescription = document.getElementById("description");
 const itemColor = document.getElementById("colors")
 
+/* Declaring variables to be used later outside of the fetch action scope */
+let productImg = "";
+let productName = "";
+let productPrice = "";
+let productDescription = "";
+
 /* Exctracting product Id from document URL */
 let params = (new URL(document.location)).searchParams;
 let productId = params.get('id');
@@ -23,25 +29,25 @@ fetch(`http://localhost:3000/api/products/${productId}`)
     /* Defining API response as productDetails and setting action to be executed */
 .then(productDetails => {
     /* creating productImg (img) element, setting src and alt attributes and declaring it as child of the itemImgContainer element*/
-    let productImg = document.createElement("img");
+    productImg = document.createElement("img");
     productImg.setAttribute("src", productDetails.imageUrl);
     productImg.setAttribute("alt", productDetails.altTxt);
     itemImgContainer.appendChild(productImg);
 
     /* Defining productName and setting it as content of the itemName element (#title) */
-    let productName = productDetails.name;
+    productName = productDetails.name;
     itemName.textContent = productName;
 
     /* Defining productPrice and setting it as content of the itemPrice element (#price) */
-    let productPrice = productDetails.price;
+    productPrice = productDetails.price;
     itemPrice.textContent = productPrice;
 
     /* Defining productDescription and setting it as content of the itemDescription element (#description) */
-    let productDescription = productDetails.description;
+    productDescription = productDetails.description;
     itemDescription.textContent = productDescription;
 
     /* Defining productColors, browsing the array returned by the API to dynamically insert color options (colorOption) in the itemColor (.color) element */ 
-    let productColors = productDetails.colors;
+    productColors = productDetails.colors;
     for(i = 0; i < productColors.length; i++){
         let colorOption = document.createElement("option");
         colorOption.setAttribute("value", productColors[i]);
@@ -81,19 +87,25 @@ let color = document.getElementById("colors");
 
 /* Listening to click event on the addToCartBtn and setting action to be executed */
 addToCartBtn.addEventListener("click", function addToCart(){
-
+    /* Setting colorPicked and quantityPicked values */
     let colorPicked = (color.value);
-    let quantityPicked = (quantity.value);
-
+    let quantityPicked = Number(quantity.value);
+    /* If a color is picked and if a quantity is picked : creating an orderProduct object, pushing it into cart and displaying a succes message as alert */
     if (color.value !== "" && quantity.value > 0 && quantity.value <= 100){
         let orderProduct = {
             id : productId,
+            name : productName,
+            description : productDescription,
+            image : productImg.src,
+            altText : productImg.alt,
+            price : productPrice,
             color : colorPicked,
             quantity : quantityPicked
             }
         cart.push(orderProduct);
         alert("Votre choix a bien été effectué et votre article a été ajouté à votre panier.")
     } else {
+    /* If a color or the quantity is not picked : displaying an error message as alert */
         alert("Veuillez sélectionner une couleur et indiquer la quantité souhaitée.");
     }
     console.log(cart);
