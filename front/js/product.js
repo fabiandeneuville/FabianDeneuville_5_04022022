@@ -68,8 +68,6 @@ fetch(`http://localhost:3000/api/products/${productId}`)
     itemPresentation.appendChild(productErrorMessage);
 })
 
-
-
 /********** SETTINGS OF THE ADD TO CART ACTION *********/
 
 /* Defining cart as an array */
