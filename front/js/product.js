@@ -10,10 +10,7 @@ const itemDescription = document.getElementById("description");
 const itemColor = document.getElementById("colors")
 
 /* Declaring variables to be used later outside of the fetch action scope */
-let productImg = "";
-let productName = "";
-let productPrice = "";
-let productDescription = "";
+let productImg, productName, productPrice, productDescription;
 
 /* Exctracting product Id from document URL */
 let params = (new URL(document.location)).searchParams;
@@ -94,11 +91,6 @@ addToCartBtn.addEventListener("click", function addToCart(){
     if (color.value !== "" && quantity.value > 0 && quantity.value <= 100){
         let orderProduct = {
             id : productId,
-            name : productName,
-            description : productDescription,
-            image : productImg.src,
-            altText : productImg.alt,
-            price : productPrice,
             color : colorPicked,
             quantity : quantityPicked
             }
@@ -106,7 +98,7 @@ addToCartBtn.addEventListener("click", function addToCart(){
         alert("Votre choix a bien été effectué et votre article a été ajouté à votre panier.")
     } else {
     /* If a color or the quantity is not picked : displaying an error message as alert */
-        alert("Veuillez sélectionner une couleur et indiquer la quantité souhaitée.");
+        alert("Veuillez sélectionner une couleur et indiquer la quantité souhaitée. Attention, la quantité maximale est fixée à 100 articles.");
     }
     console.log(cart);
 });
