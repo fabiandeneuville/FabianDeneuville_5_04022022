@@ -9,9 +9,6 @@ const itemPrice = document.getElementById("price");
 const itemDescription = document.getElementById("description");
 const itemColor = document.getElementById("colors")
 
-/* Declaring variables to be used later outside of the fetch action scope */
-let productImg, productName, productPrice, productDescription;
-
 /* Exctracting product Id from document URL */
 let params = (new URL(document.location)).searchParams;
 let productId = params.get('id');
