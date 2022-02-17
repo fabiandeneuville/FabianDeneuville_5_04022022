@@ -65,35 +65,3 @@ fetch(`http://localhost:3000/api/products/${productId}`)
     itemPresentation.appendChild(productErrorMessage);
 })
 
-/********** SETTINGS OF THE ADD TO CART ACTION *********/
-
-/* Defining cart as an array */
-let cart = [];
-
-/* Searching in the document for the addToCart button and assigning it in a constant named addToCartBtn */
-const addToCartBtn = document.getElementById("addToCart");
-
-/* Selection of the #quantity and #colors elements and assigining them into variables*/
-let quantity = document.getElementById("quantity");
-let color = document.getElementById("colors");
-
-/* Listening to click event on the addToCartBtn and setting action to be executed */
-addToCartBtn.addEventListener("click", function addToCart(){
-    /* Setting colorPicked and quantityPicked values */
-    let colorPicked = (color.value);
-    let quantityPicked = Number(quantity.value);
-    /* If a color is picked and if a quantity is picked : creating an orderProduct object, pushing it into cart and displaying a succes message as alert */
-    if (color.value !== "" && quantity.value > 0 && quantity.value <= 100){
-        let orderProduct = {
-            id : productId,
-            color : colorPicked,
-            quantity : quantityPicked
-            }
-        cart.push(orderProduct);
-        alert("Votre choix a bien été effectué et votre article a été ajouté à votre panier.")
-    } else {
-    /* If a color or the quantity is not picked : displaying an error message as alert */
-        alert("Veuillez sélectionner une couleur et indiquer la quantité souhaitée. Attention, la quantité maximale est fixée à 100 articles.");
-    }
-    console.log(cart);
-});
