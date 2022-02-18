@@ -1,29 +1,4 @@
-function saveCart(cart){
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function getCart(){
-    let cart = localStorage.getItem("cart");
-    if(cart == null){
-        return [];
-    }else{
-        return JSON.parse(cart);
-    }
-}
-
-function addToCart(product){
-    let cart = getCart();
-    let productFound = cart.find(productFound => productFound.id == product.id && productFound.color == product.color);
-    if(productFound != undefined){
-        productFound.quantity += product.quantity;
-    }else{
-        cart.push(product);
-    }
-    saveCart(cart);
-}
-
 let cart = getCart();
-console.log(cart);
 
 const cartList = document.getElementById("cart__items")
 
@@ -34,7 +9,7 @@ for (let product of cart){
     fetch(`http://localhost:3000/api/products/${productId}`)
     .then (response => response.json())
     .then (productDetails => {
-        console.log(productDetails.price);
+
         let productArticle = document.createElement("article");
         productArticle.classList.add("cart__item");
         productArticle.setAttribute("data-id", productId);
@@ -99,6 +74,18 @@ for (let product of cart){
         productDeleteButton.classList.add("deleteItem");
         productDeleteButton.textContent = "Supprimer";
         productDelete.appendChild(productDeleteButton);
+    })
+    .catch((error) => {
+        console.log("Erreur dans le chargement du panier" + error);
+        let cartErrorMessage = document.createElement("h2");
+        cartErrorMessage.textContent = "Nous rencontrons des difficultés techniques pour afficher votre panier. Nos équipes sont à l'oeuvre pour résoudre ce problème dans les plus brefs délais. Nous vous invitons à réessayer ultérieurement et nous excusons pour la gêne occasionnée.";
+        cartErrorMessage.style.textAlign = "center";
+        cartErrorMessage.style.color = "red";
+        cartErrorMessage.style.backgroundColor = "white";
+        cartErrorMessage.style.padding = "15px";
+        cartErrorMessage.style.borderRadius = "25px";
+        cartErrorMessage.style.border = "2px solid red";
+        cartList.appendChild(cartErrorMessage);
     })
 }
 
