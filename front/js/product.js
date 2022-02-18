@@ -23,25 +23,25 @@ fetch(`http://localhost:3000/api/products/${productId}`)
     /* Defining API response as productDetails and setting action to be executed */
 .then(productDetails => {
     /* creating productImg (img) element, setting src and alt attributes and declaring it as child of the itemImgContainer element*/
-    productImg = document.createElement("img");
+    let productImg = document.createElement("img");
     productImg.setAttribute("src", productDetails.imageUrl);
     productImg.setAttribute("alt", productDetails.altTxt);
     itemImgContainer.appendChild(productImg);
 
     /* Defining productName and setting it as content of the itemName element (#title) */
-    productName = productDetails.name;
+    let productName = productDetails.name;
     itemName.textContent = productName;
 
     /* Defining productPrice and setting it as content of the itemPrice element (#price) */
-    productPrice = productDetails.price;
+    let productPrice = productDetails.price;
     itemPrice.textContent = productPrice;
 
     /* Defining productDescription and setting it as content of the itemDescription element (#description) */
-    productDescription = productDetails.description;
+    let productDescription = productDetails.description;
     itemDescription.textContent = productDescription;
 
     /* Defining productColors, browsing the array returned by the API to dynamically insert color options (colorOption) in the itemColor (.color) element */ 
-    productColors = productDetails.colors;
+    let productColors = productDetails.colors;
     for(i = 0; i < productColors.length; i++){
         let colorOption = document.createElement("option");
         colorOption.setAttribute("value", productColors[i]);
