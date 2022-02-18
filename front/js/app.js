@@ -21,7 +21,7 @@ function getCart(){
 function addToCart(product){
     /* Retrieving of cart with the getCart function */
     let cart = getCart();
-    /* Checking if a product with identical id AND idendical color is already in the cart */
+    /* Checking if a product with identical id AND identical color is already in the cart */
     let productFound = cart.find(productFound => productFound.id === product.id && productFound.color === product.color);
     /* If YES, adjusting product quantity by adding the new quantity declared to it */
     if(productFound != undefined){
@@ -32,4 +32,18 @@ function addToCart(product){
     }
     /* Saving the modified cart using the saveCart function */
     saveCart(cart);
+}
+
+/* Creating a function to remove products from cart */
+function removeFromCart(product){
+    /* Retrieving of cart with the getCart function */
+    let cart = getCart();
+    /* Filtering cart to keep only the products of which the id is different from the id of the product that we want to remove */
+    cart = cart.filter(p => p.id != product.id);
+    /* Desplaying an alert to inform the user that the product has been removed */
+    alert("L'article a été retiré de votre panier");
+    /* Saving the modified cart using the saveCart function */
+    saveCart(cart);
+    /* Reloading the page after deletion of the product */
+    document.location.reload();
 }

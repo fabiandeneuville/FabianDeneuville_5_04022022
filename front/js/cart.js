@@ -112,4 +112,3 @@ for (let product of cart){
         cartList.appendChild(cartErrorMessage);
     })
 }
-
