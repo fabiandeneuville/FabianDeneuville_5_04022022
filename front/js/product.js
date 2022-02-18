@@ -65,8 +65,7 @@ fetch(`http://localhost:3000/api/products/${productId}`)
     itemPresentation.appendChild(productErrorMessage);
 })
 
-/********** ADD TO CART FUNCTIONALITY **********/
-
+/********** ADDING PRODUCT TO THE CART **********/
 
 /* Searching in the document for the addToCart button and assigning it in a constant named addToCartBtn */
 const addToCartBtn = document.getElementById("addToCart");

@@ -1,3 +1,5 @@
+/********** DISPLAYING PRODUCTS ON THE INDEX PAGE **********/
+
 /* Searching in the document for the element that will contain the products and assigning it in a constant named itemsList */
 const itemsList = document.getElementById('items');
 

@@ -1,4 +1,4 @@
-/********** Cart management functions **********/
+/********** CART MANAGEMENT **********/
 
 /* Creating a function to save the cart in the localStorage in a JSON format */
 function saveCart(cart){
