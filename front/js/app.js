@@ -47,3 +47,19 @@ function removeFromCart(product){
     /* Reloading the page after deletion of the product */
     document.location.reload();
 }
+
+/* Creating a function to get the total amount of products in the cart */
+function getNumberOfProducts(){
+    /* Retrieving of cart with the getCart function */
+    let cart = getCart();
+    /* Defining numberOfProduct and setting value to 0 */
+    let numberOfProduct = 0;
+    /* Browsing the cart with a for of loop */
+    for (let product of cart){
+        /* For each product in the cart, adding the product quantity to the total amount of products */
+        numberOfProduct += product.quantity;
+        console.log(numberOfProduct);
+    }
+    /* Returning the total amount of products */
+    return numberOfProduct;
+}

@@ -5,6 +5,9 @@ let cart = getCart();
 
 /* Searching in the document for the element that will contain the cart details */
 const cartList = document.getElementById("cart__items")
+/* Searching in the document for the elements that will display total price and total quantity of products in cart */
+let totalProductsQuantity = document.getElementById("totalQuantity");
+let totalPrice = document.getElementById("totalPrice");
 
 /* Browsing the cart with a for of loop */  
 for (let product of cart){
@@ -98,10 +101,10 @@ for (let product of cart){
         productDeleteButton.textContent = "Supprimer";
         productDelete.appendChild(productDeleteButton);
 
+        /* Using the event listener to execute the removeFromCart action when the delete button is clicked on */
         productDeleteButton.addEventListener("click", function(){
             removeFromCart(product);
         });
-            
     })
     /* If the connection to the API has failed or is interrupted, creating a message to be uploaded for each product to inform the final users that something went wrong */
     .catch((error) => {
@@ -117,3 +120,8 @@ for (let product of cart){
         cartList.appendChild(cartErrorMessage);
     })
 }
+
+/********** DISPLAYING TOTAL AMOUNT OF PRODUCTS ON THE CART PAGE **********/ 
+
+/* Setting the totalProductQuantity text content with the value returned by the getNumberOfProduct function */
+totalProductsQuantity.textContent = getNumberOfProducts();
