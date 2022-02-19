@@ -38,8 +38,8 @@ function addToCart(product){
 function removeFromCart(product){
     /* Retrieving of cart with the getCart function */
     let cart = getCart();
-    /* Filtering cart to keep only the products of which the id is different from the id of the product that we want to remove */
-    cart = cart.filter(p => p.id != product.id);
+    /* Filtering cart to keep only the products of which the id is different from the id of the product that we want to remove OR the products with a different color */
+    cart = cart.filter(p => p.id != product.id || p.color != product.color);
     /* Desplaying an alert to inform the user that the product has been removed */
     alert("L'article a été retiré de votre panier");
     /* Saving the modified cart using the saveCart function */
