@@ -63,3 +63,8 @@ function getNumberOfProducts(){
     /* Returning the total amount of products */
     return numberOfProduct;
 }
+
+function getTotalPrice(product, quantity){
+    totalCartPrice += product.price * quantity;
+    return totalCartPrice;
+}
