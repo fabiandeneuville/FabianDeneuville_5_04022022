@@ -97,6 +97,11 @@ for (let product of cart){
         productDeleteButton.classList.add("deleteItem");
         productDeleteButton.textContent = "Supprimer";
         productDelete.appendChild(productDeleteButton);
+
+        productDeleteButton.addEventListener("click", function(){
+            removeFromCart(product);
+        });
+            
     })
     /* If the connection to the API has failed or is interrupted, creating a message to be uploaded for each product to inform the final users that something went wrong */
     .catch((error) => {
