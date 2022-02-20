@@ -109,6 +109,16 @@ for (let product of cart){
 
         totalPrice.textContent = getTotalPrice(productDetails, productQuantity);
 
+        productQuantityPicked.addEventListener("change", () => {
+            productQuantity = modifyQuantity(product, Number(productQuantityPicked.value));
+            totalProductsQuantity.textContent = getNumberOfProducts();
+        })
+
+
+
+
+
+
     })
     /* If the connection to the API has failed or is interrupted, creating a message to be uploaded for each product to inform the final users that something went wrong */
     .catch((error) => {

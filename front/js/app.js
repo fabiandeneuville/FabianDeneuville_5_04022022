@@ -68,3 +68,14 @@ function getTotalPrice(product, quantity){
     totalCartPrice += product.price * quantity;
     return totalCartPrice;
 }
+
+
+
+function modifyQuantity(product, quantity){
+    let cart = getCart();
+    let productFound = cart.find(p => p.id == product.id && p.color == product.color);
+    if (productFound != undefined){
+        productFound.quantity = quantity;
+    }
+    saveCart(cart);
+}
