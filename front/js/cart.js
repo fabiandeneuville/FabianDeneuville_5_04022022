@@ -139,3 +139,15 @@ for (let product of cart){
         cartList.appendChild(cartErrorMessage);
     })
 }
+
+/********** CHANGING PAGE STRUCTURE WHEN THE CART IS EMPTY **********/ 
+
+/* Searching in the document for the elements that contain totals and order form */
+const totalDisplay = document.querySelector(".cart__price p");
+const orderForm = document.querySelector(".cart__order");
+
+/* Checking cart length. If the cart is empty : changing the text in totals element and removing order form from page */
+if(cart.length === 0){
+    totalDisplay.innerHTML = "Votre panier est vide.<br><a href=\"./index.html\">Consulter notre catalogue</a>"
+    orderForm.style.display = "none";
+}
