@@ -57,11 +57,7 @@ fetch(`http://localhost:3000/api/products/${productId}`)
     let productErrorMessage = document.createElement("h2");
     productErrorMessage.textContent = "Nous rencontrons des difficultés techniques pour afficher l'article que vous avez sélectionné. Nos équipes sont à l'oeuvre pour résoudre ce problème dans les plus brefs délais. Nous vous invitons à réessayer ultérieurement et nous excusons pour la gêne occasionnée.";
     productErrorMessage.style.textAlign = "center";
-    productErrorMessage.style.color = "red";
-    productErrorMessage.style.backgroundColor = "white";
     productErrorMessage.style.padding = "15px";
-    productErrorMessage.style.borderRadius = "25px";
-    productErrorMessage.style.border = "2px solid red";
     itemPresentation.appendChild(productErrorMessage);
 })
 
@@ -79,11 +75,15 @@ addToCartBtn.addEventListener("click", () => {
     /* Setting colorPicked and quantityPicked values */
     let colorPicked = (color.value);
     let quantityPicked = Number(quantity.value);
+    /* Retrieving of product name */
+    let productName = document.getElementById("title").textContent;
+    console.log(productName)
     /* Creating product to be uploaded into cart */
     let product = {
         id : productId,
         color : colorPicked,
-        quantity : quantityPicked
+        quantity : quantityPicked,
+        name : productName
         }
     /* Checking if a color and a quantity are picked :
     If YES : adding product to cart calling the addToCart function

@@ -64,18 +64,24 @@ function getNumberOfProducts(){
     return numberOfProduct;
 }
 
+/* Creating a function to get the total price of cart */
 function getTotalPrice(product, quantity){
-    totalCartPrice += product.price * quantity;
+    /* For each product in cart, adding the product subtotal to the total price of cart */
+    totalCartPrice += product.price * quantity
+    /* Returning total price of cart */
     return totalCartPrice;
 }
 
-
-
+/* Creating a function to modify product quantity */
 function modifyQuantity(product, quantity){
+    /* Retrieving of cart */
     let cart = getCart();
+    /* Checking if a product with identical id AND identical color is already in the cart */
     let productFound = cart.find(p => p.id == product.id && p.color == product.color);
+    /* If YES, setting the quantity of the product with the new quantity */
     if (productFound != undefined){
         productFound.quantity = quantity;
     }
+    /* Saving the modified cart using the saveCart function */
     saveCart(cart);
 }

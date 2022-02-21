@@ -12,10 +12,11 @@ let totalCartPrice = 0;
 
 /* Browsing the cart with a for of loop */  
 for (let product of cart){
-    /* For each product, retrieving the id, color and quantity */
+    /* For each product, retrieving of the id, color, quantity and name (name for error display only) */
     let productId = product.id;
     let productColor = product.color;
     let productQuantity = product.quantity;
+    let productName = product.name;
     /* Connecting to the API with fetch() to get the product details */
     fetch(`http://localhost:3000/api/products/${productId}`)
     /* Returning the response in a JSON format */
@@ -107,30 +108,24 @@ for (let product of cart){
             removeFromCart(product);
         });
 
+        /* Adding product subtotal to the cart total price with the getTotalPrice function */
         totalPrice.textContent = getTotalPrice(productDetails, productQuantity);
 
+        /* Updating product quantity of each product and the total quantity of cart when a new quantity is picked by user */
         productQuantityPicked.addEventListener("change", () => {
+            /* Setting new quantity of the product in cart with the modifyQuantity() function */
             productQuantity = modifyQuantity(product, Number(productQuantityPicked.value));
+            /* Updating total products quantity with the getNumberOfProducts() function */
             totalProductsQuantity.textContent = getNumberOfProducts();
         })
-
-
-
-
-
-
     })
     /* If the connection to the API has failed or is interrupted, creating a message to be uploaded for each product to inform the final users that something went wrong */
     .catch((error) => {
         console.log("Erreur dans le chargement du panier" + error);
         let cartErrorMessage = document.createElement("h2");
-        cartErrorMessage.textContent = "L'article que vous avez sélectionné semble inaccessible pour le moment.";
+        cartErrorMessage.textContent = `L'article ${productName} de couleur ${productColor} que vous avez sélectionné semble inaccessible pour le moment.`;
         cartErrorMessage.style.textAlign = "center";
-        cartErrorMessage.style.color = "red";
-        cartErrorMessage.style.backgroundColor = "white";
         cartErrorMessage.style.padding = "15px";
-        cartErrorMessage.style.borderRadius = "25px";
-        cartErrorMessage.style.border = "2px solid red";
         cartList.appendChild(cartErrorMessage);
     })
 }

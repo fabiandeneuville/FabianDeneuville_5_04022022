@@ -48,10 +48,6 @@ fetch('http://localhost:3000/api/products')
     let errorMessage = document.createElement('h2');
     errorMessage.textContent = "Nous rencontrons des difficultés techniques et ne pouvons pas vous présenter les articles pour le moment. Nos équipes sont à l'oeuvre pour résoudre ce problème dans les plus brefs délais. Nous vous invitons à réessayer ultérieurement et nous excusons pour la gêne occasionnée.";
     errorMessage.style.textAlign = "center";
-    errorMessage.style.color = "red";
-    errorMessage.style.backgroundColor = "white";
     errorMessage.style.padding = "15px";
-    errorMessage.style.borderRadius = "25px";
-    errorMessage.style.border = "2px solid red";
     itemsList.appendChild(errorMessage);
 })
