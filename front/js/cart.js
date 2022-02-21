@@ -120,7 +120,7 @@ for (let product of cart){
         /* Listening to change event on the quantity input and setting action de be executed */
         productQuantityPicked.addEventListener("change", () => {
             /* Defining new product quantity using the modifyQuantity function - Cart to be saved during this step with the modifyQuantity function */
-            productQuantity = modifyQuantity(product, oldQuantity);
+            productQuantity = modifyQuantity(product, Number(productQuantityPicked.value));
             /* Using the modifyTotalPrice function to calculate the new price for each item, according to the quantity variation */
             totalPrice.textContent = modifyTotalPrice(productDetails, oldQuantity, Number(productQuantityPicked.value))
             /* Defining (new) current quantity picked as old quantity for later use on change event */
