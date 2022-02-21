@@ -108,14 +108,24 @@ for (let product of cart){
             removeFromCart(product);
         });
 
-        /* Adding product subtotal to the cart total price with the getTotalPrice function */
-        totalPrice.textContent = getTotalPrice(productDetails, productQuantity);
+        /********** DISPLAYING TOTAL AMOUNT OF PRODUCTS ON THE CART PAGE **********/ 
 
-        /* Updating product quantity of each product and the total quantity of cart when a new quantity is picked by user */
+        /* Using the getNumberOfProduct function to display the total quantity on the page */
+        totalProductsQuantity.textContent = getNumberOfProducts();
+        /* Using the getTotalPrice function to display the total price on the page */
+        totalPrice.textContent = getTotalPrice(productDetails, productQuantity);
+        /* Defining current quantity picked as old quantity for later use on change event */
+        let oldQuantity = Number(productQuantityPicked.value);
+
+        /* Listening to change event on the quantity input and setting action de be executed */
         productQuantityPicked.addEventListener("change", () => {
-            /* Setting new quantity of the product in cart with the modifyQuantity() function */
-            productQuantity = modifyQuantity(product, Number(productQuantityPicked.value));
-            /* Updating total products quantity with the getNumberOfProducts() function */
+            /* Defining new product quantity using the modifyQuantity function - Cart to be saved during this step with the modifyQuantity function */
+            productQuantity = modifyQuantity(product, oldQuantity);
+            /* Using the modifyTotalPrice function to calculate the new price for each item, according to the quantity variation */
+            totalPrice.textContent = modifyTotalPrice(productDetails, oldQuantity, Number(productQuantityPicked.value))
+            /* Defining (new) current quantity picked as old quantity for later use on change event */
+            oldQuantity = Number(productQuantityPicked.value);
+            /* Retrieving total quantity in the cart using the getNumberOfProduct function */
             totalProductsQuantity.textContent = getNumberOfProducts();
         })
     })
@@ -129,8 +139,3 @@ for (let product of cart){
         cartList.appendChild(cartErrorMessage);
     })
 }
-
-/********** DISPLAYING TOTAL AMOUNT OF PRODUCTS ON THE CART PAGE **********/ 
-
-/* Setting the totalProductQuantity text content with the value returned by the getNumberOfProduct function */
-totalProductsQuantity.textContent = getNumberOfProducts();
