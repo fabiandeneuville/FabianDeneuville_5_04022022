@@ -58,7 +58,6 @@ function getNumberOfProducts(){
     for (let product of cart){
         /* For each product in the cart, adding the product quantity to the total amount of products */
         numberOfProduct += product.quantity;
-        console.log(numberOfProduct);
     }
     /* Returning the total amount of products */
     return numberOfProduct;
@@ -84,4 +83,17 @@ function modifyQuantity(product, quantity){
     }
     /* Saving the modified cart using the saveCart function */
     saveCart(cart);
+}
+
+/* Creating a function to modify total price */
+function modifyTotalPrice(product, oldQuantity, newQuantity){
+    /* If the new quantity set is superior to the old quantity : incrementing and returning the total price */
+    if(newQuantity > oldQuantity){
+        totalCartPrice += product.price * (newQuantity - oldQuantity);
+        return totalCartPrice
+    /* If the new quantity set is superior to the old quantity : decrementing and returning the total price */
+    }else if(newQuantity < oldQuantity){
+        totalCartPrice -= product.price * (oldQuantity - newQuantity);
+        return totalCartPrice
+    }
 }
