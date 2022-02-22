@@ -154,3 +154,27 @@ if(cart.length === 0){
 
 /********** ORDER FORM MANAGEMENT **********/
 
+let form = document.querySelector(".cart__order__form");
+let submitBtn = document.querySelector("#order");
+
+submitBtn.setAttribute("disabled", true);
+
+form.firstName.addEventListener("change", () => {
+    textValidation(form.firstName);
+})
+
+form.lastName.addEventListener("change", () => {
+    textValidation(form.lastName);
+})
+
+form.address.addEventListener("change", () => {
+    adressValidation(form.address);
+})
+ 
+form.city.addEventListener("change", () => {
+    textValidation(form.city);
+})
+
+form.email.addEventListener("change", () => {
+    emailValidation(form.email);
+})
