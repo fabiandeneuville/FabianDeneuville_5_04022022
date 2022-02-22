@@ -97,3 +97,36 @@ function modifyTotalPrice(product, oldQuantity, newQuantity){
         return totalCartPrice
     }
 }
+
+/********** FORM INPUTS VALIDATION **********/
+
+function textValidation(input){
+    let nameRegExp = /^[a-zéèôöîïûùü' -]+$/gi;
+    let test = nameRegExp.test(input.value);
+    if(test == true){
+        input.nextElementSibling.textContent = "OK";
+    }else{
+        input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des lettres, espaces, - et ' ";
+    }
+}
+
+function adressValidation(input){
+    let adressRegExp = /^[a-z0-9éèôöîïûùü' -]+$/gi;
+    let test = adressRegExp.test(input.value);
+    if(test == true){
+        input.nextElementSibling.textContent = "OK";
+    }else{
+        input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des chiffres, lettres, espaces, - et ' ";
+    }
+}
+
+function emailValidation(input){
+    let emailRegExp = /^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z ]+$/gi;
+    test = emailRegExp.test(input.value);
+    if(test === true){
+        input.nextElementSibling.textContent = "OK";
+    }else{
+        input.nextElementSibling.textContent = "Veuillez saisir une adresse email valide";
+    }
+}
+
