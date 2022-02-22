@@ -151,3 +151,6 @@ if(cart.length === 0){
     totalDisplay.innerHTML = "Votre panier est vide.<br><a href=\"./index.html\">Consulter notre catalogue</a>"
     orderForm.style.display = "none";
 }
+
+/********** ORDER FORM MANAGEMENT **********/
+
