@@ -154,27 +154,28 @@ if(cart.length === 0){
 
 /********** ORDER FORM MANAGEMENT **********/
 
+/* Searching in the document for form and submit button elements */
 let form = document.querySelector(".cart__order__form");
 let submitBtn = document.querySelector("#order");
 
-submitBtn.setAttribute("disabled", true);
+/* Adding a pattern attribute to each input and listening to input event to display a message (succes or error) in the element below each input */
 
-form.firstName.addEventListener("change", () => {
-    textValidation(form.firstName);
+form.firstName.setAttribute("pattern", "[a-z A-Z-']{2,50}")
+form.firstName.addEventListener("input", () => {
+    textValidity(form.firstName);
 })
-
-form.lastName.addEventListener("change", () => {
-    textValidation(form.lastName);
+form.lastName.setAttribute("pattern", "[a-z A-Z-']{2,50}")
+form.lastName.addEventListener("input", () => {
+    textValidity(form.lastName);
 })
-
-form.address.addEventListener("change", () => {
-    adressValidation(form.address);
+form.address.setAttribute("pattern", "[a-zA-Z 0-9'-]{2,50}")
+form.address.addEventListener("input", () => {
+    adressValidity(form.address);
 })
- 
-form.city.addEventListener("change", () => {
-    textValidation(form.city);
+form.city.setAttribute("pattern", "[a-z A-Z-']{2,50}")
+form.city.addEventListener("input", () => {
+    textValidity(form.city);
 })
-
-form.email.addEventListener("change", () => {
-    emailValidation(form.email);
+form.email.addEventListener("input", () => {
+    emailValidity(form.email);
 })
