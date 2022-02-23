@@ -98,33 +98,39 @@ function modifyTotalPrice(product, oldQuantity, newQuantity){
     }
 }
 
-/********** FORM INPUTS VALIDATION **********/
+/********** FORM INPUTS VALIDITY MESSAGE DISPLAY **********/
 
-function textValidation(input){
-    let nameRegExp = /^[a-zéèôöîïûùü' -]+$/gi;
+/* Creating a function to check validity of the text inputs (firstName, LastName, city) and display a message (succes or error) */
+function textValidity(input){
+    let nameRegExp = /^[a-zéèôöîïûùü' -]{2,50}/gi;
     let test = nameRegExp.test(input.value);
     if(test == true){
-        input.nextElementSibling.textContent = "OK";
+        input.nextElementSibling.textContent = "Champ valide";
+        input.nextElementSibling.style.color = "white";
     }else{
         input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des lettres, espaces, - et ' ";
     }
 }
 
-function adressValidation(input){
-    let adressRegExp = /^[a-z0-9éèôöîïûùü' -]+$/gi;
+/* Creating a function to check validity of the text/number (address) inputs and display a message (succes or error) */
+function adressValidity(input){
+    let adressRegExp = /^[a-z0-9éèôöîïûùü' -]{2,50}/gi;
     let test = adressRegExp.test(input.value);
     if(test == true){
-        input.nextElementSibling.textContent = "OK";
+        input.nextElementSibling.textContent = "Champ valide";
+        input.nextElementSibling.style.color = "white";
     }else{
         input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des chiffres, lettres, espaces, - et ' ";
     }
 }
 
-function emailValidation(input){
+/* Creating a function to check validity of the email input and display a message (succes or error) */
+function emailValidity(input){
     let emailRegExp = /^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z ]+$/gi;
     test = emailRegExp.test(input.value);
     if(test === true){
-        input.nextElementSibling.textContent = "OK";
+        input.nextElementSibling.textContent = "Champ valide";
+        input.nextElementSibling.style.color = "white";
     }else{
         input.nextElementSibling.textContent = "Veuillez saisir une adresse email valide";
     }
