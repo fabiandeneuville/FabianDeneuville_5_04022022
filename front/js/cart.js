@@ -156,7 +156,7 @@ if(cart.length === 0){
 
 /* Searching in the document for form and submit button elements */
 let form = document.querySelector(".cart__order__form");
-let submitBtn = document.querySelector("#order");
+let submitButton = document.querySelector("#order");
 
 /* Adding a pattern attribute to each input and listening to input event to display a message (succes or error) in the element below each input */
 
@@ -178,4 +178,42 @@ form.city.addEventListener("input", () => {
 })
 form.email.addEventListener("input", () => {
     emailValidity(form.email);
+})
+
+/********** ORDER FORM SUBMIT **********/
+
+
+let products = [];
+
+for(let product of cart){
+    products.push(product.id);
+}
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault()
+    let contact = {
+        firstName : form.firstName.value,
+        lastName : form.lastName.value,
+        address : form.address.value,
+        city : form.city.value,
+        email : form.email.value
+    }
+    fetch("http://localhost:3000/api/products/order", {
+        method:"POST",
+        headers :{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+            body: JSON.stringify({contact, products})
+    })
+    .then(response => response.json())
+    .then(orderDetails => {
+        console.log("L'envoi du formulaire à bien été effectué")
+        let orderId = orderDetails.orderId;
+        console.log(orderId);
+        window.location.href= `./confirmation.html?id=${orderId}`;
+    })
+    .catch((error) => {
+        console.log("L'envoi du formulaire à l'API a rencontré un problème" + error)
+    })
 })
