@@ -10,7 +10,6 @@ fetch('http://localhost:3000/api/products')
 .then(response => response.json())
     /* Defining API response as Products and setting action to be executed */
 .then(products => { 
-
     /* Browsing the data returned by the API with a for loop */    
     for (let i = 0; i < products.length; i++){
         /* Creating productLink (a) element, setting href attribute and defining it as child of the itemsList element */

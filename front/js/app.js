@@ -5,6 +5,7 @@ function saveCart(cart){
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+
 /* Creating a function to get the cart from the localStorage */
 function getCart(){
     let cart = localStorage.getItem("cart");
@@ -16,6 +17,7 @@ function getCart(){
         return JSON.parse(cart);
     }
 }
+
 
 /* Creating a function to add products to the cart */
 function addToCart(product){
@@ -34,6 +36,7 @@ function addToCart(product){
     saveCart(cart);
 }
 
+
 /* Creating a function to remove products from cart */
 function removeFromCart(product){
     /* Retrieving of cart with the getCart function */
@@ -45,6 +48,7 @@ function removeFromCart(product){
     /* Reloading the page after deletion of the product */
 }
 
+
 /* Creating a function to clear the cart when order form is submitted */
 function clearCart(){
     /* Retrieving of cart with the getCart function */
@@ -54,6 +58,7 @@ function clearCart(){
         removeFromCart(product)
     }
 }
+
 
 /* Creating a function to get the total amount of products in the cart */
 function getNumberOfProducts(){
@@ -70,6 +75,7 @@ function getNumberOfProducts(){
     return numberOfProduct;
 }
 
+
 /* Creating a function to get the total price of cart */
 function getTotalPrice(product, quantity){
     /* For each product in cart, adding the product subtotal to the total price of cart */
@@ -77,6 +83,7 @@ function getTotalPrice(product, quantity){
     /* Returning total price of cart */
     return totalCartPrice;
 }
+
 
 /* Creating a function to modify product quantity */
 function modifyQuantity(product, quantity){
@@ -92,6 +99,7 @@ function modifyQuantity(product, quantity){
     saveCart(cart);
 }
 
+
 /* Creating a function to modify total price */
 function modifyTotalPrice(product, oldQuantity, newQuantity){
     /* If the new quantity set is superior to the old quantity : incrementing and returning the total price */
@@ -105,6 +113,7 @@ function modifyTotalPrice(product, oldQuantity, newQuantity){
     }
 }
 
+
 /********** FORM INPUTS VALIDITY MESSAGE DISPLAY **********/
 
 /* Creating a function to check validity of the text inputs (firstName, LastName) and display a message (succes or error) */
@@ -117,6 +126,7 @@ function textValidity(input){
         input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des lettres, espaces, - et ' ";
     }
 }
+
 
 /* Creating a function to check validity of the text/number inputs (City) and display a message (succes or error) */
 function cityValidity(input){
@@ -139,6 +149,7 @@ function adressValidity(input){
         input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des chiffres, lettres, espaces, - et ' ";
     }
 }
+
 
 /* Creating a function to check validity of the email input and display a message (succes or error) */
 function emailValidity(input){
