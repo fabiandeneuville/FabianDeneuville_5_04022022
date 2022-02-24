@@ -158,24 +158,29 @@ if(cart.length === 0){
 let form = document.querySelector(".cart__order__form");
 let submitButton = document.querySelector("#order");
 
-/* Adding a pattern attribute to each input and listening to input event to display a message (succes or error) in the element below each input */
+/* Adding pattern and placeholder attributes to each input and listening to input event to display a message (succes or error) in the element below each input */
 
-form.firstName.setAttribute("pattern", "[a-z A-Z-']{2,50}")
+form.firstName.setAttribute("pattern", "[a-z A-Z-']{2,50}");
+form.firstName.setAttribute("placeholder", "Exemple : Martin");
 form.firstName.addEventListener("input", () => {
     textValidity(form.firstName);
 })
-form.lastName.setAttribute("pattern", "[a-z A-Z-']{2,50}")
+form.lastName.setAttribute("pattern", "[a-z A-Z-']{2,50}");
+form.lastName.setAttribute("placeholder", "Exemple : Dupont");
 form.lastName.addEventListener("input", () => {
     textValidity(form.lastName);
 })
-form.address.setAttribute("pattern", "[a-zA-Z 0-9'-]{2,50}")
+form.address.setAttribute("pattern", "[a-zA-Z 0-9'-]{2,50}");
+form.address.setAttribute("placeholder", "Exemple : 1 rue des Petits Champs");
 form.address.addEventListener("input", () => {
     adressValidity(form.address);
 })
-form.city.setAttribute("pattern", "[a-z A-Z-']{2,50}")
+form.city.setAttribute("pattern", "[0-9]{5}[a-zA-Zéèôöîïûùü' -]{2,50}");
+form.city.setAttribute("placeholder", "Exemple : 75020 Paris");
 form.city.addEventListener("input", () => {
-    textValidity(form.city);
+    cityValidity(form.city);
 })
+form.email.setAttribute("placeholder", "Exemple : exemple@mail.com");
 form.email.addEventListener("input", () => {
     emailValidity(form.email);
 })

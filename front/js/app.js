@@ -106,9 +106,18 @@ function textValidity(input){
     let test = nameRegExp.test(input.value);
     if(test == true){
         input.nextElementSibling.textContent = "Champ valide";
-        input.nextElementSibling.style.color = "white";
     }else{
         input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des lettres, espaces, - et ' ";
+    }
+}
+
+function cityValidity(input){
+    let cityRegExp = /^[0-9]{5}[a-zéèôöîïûùü' -]{2,50}$/gi;
+    let test = cityRegExp.test(input.value);
+    if(test == true){
+        input.nextElementSibling.textContent = "Champ valide";
+    }else{
+        input.nextElementSibling.textContent = "Veuillez respecter le format CODE POSTAL (5 CHIFFRES) suivi du nom de la VILLE. Exemple : 75012 Paris"
     }
 }
 
@@ -118,7 +127,6 @@ function adressValidity(input){
     let test = adressRegExp.test(input.value);
     if(test == true){
         input.nextElementSibling.textContent = "Champ valide";
-        input.nextElementSibling.style.color = "white";
     }else{
         input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des chiffres, lettres, espaces, - et ' ";
     }
@@ -130,7 +138,6 @@ function emailValidity(input){
     test = emailRegExp.test(input.value);
     if(test === true){
         input.nextElementSibling.textContent = "Champ valide";
-        input.nextElementSibling.style.color = "white";
     }else{
         input.nextElementSibling.textContent = "Veuillez saisir une adresse email valide";
     }
