@@ -21,7 +21,7 @@ for (let product of cart){
     fetch(`http://localhost:3000/api/products/${productId}`)
     /* Returning the response in a JSON format */
     .then (response => response.json())
-    /* Defining API response as productDetails and setting action to be executed for each product of the cart*/
+    /* Defining API response as productDetails and setting action to be executed for each product of the cart */
     .then (productDetails => {
 
         /* Creating the article element, setting attributes, adding the cart__item class and defining it as child of the cartList element */
@@ -163,7 +163,6 @@ let form = document.querySelector(".cart__order__form");
 let submitButton = document.querySelector("#order");
 
 /* Adding pattern and placeholder attributes to each input and listening to input event to display a message (succes or error) in the element below each input */
-
 form.firstName.setAttribute("pattern", "[a-z A-Z-']{2,50}");
 form.firstName.setAttribute("placeholder", "Exemple : Martin");
 form.firstName.addEventListener("input", () => {
@@ -191,15 +190,18 @@ form.email.addEventListener("input", () => {
 
 /********** ORDER FORM SUBMIT **********/
 
-
+/* Initializing the products array that will be sent to the API */
 let products = [];
 
+/* For each product in the cart, pushing the productId in the products array */
 for(let product of cart){
     products.push(product.id);
 }
 
+/* Listening to the submit event on the form - Preventing the submit action to reload the page with the prevendDefault method */
 form.addEventListener("submit", (event) => {
     event.preventDefault()
+    /* Creating the contact object that will be sent to the API */
     let contact = {
         firstName : form.firstName.value,
         lastName : form.lastName.value,
@@ -207,6 +209,7 @@ form.addEventListener("submit", (event) => {
         city : form.city.value,
         email : form.email.value
     }
+    /* Sending the contact object and the products array to the API */
     fetch("http://localhost:3000/api/products/order", {
         method:"POST",
         headers :{
@@ -215,15 +218,21 @@ form.addEventListener("submit", (event) => {
         },
             body: JSON.stringify({contact, products})
     })
+    /* Geting the response in a JSON format */
     .then(response => response.json())
+    /* Defining API response as orderDetails and setting action to be executed */
     .then(orderDetails => {
         console.log("L'envoi du formulaire à bien été effectué")
+        /* Getting the orderId element from the API response and asigning it into a variable for later use in the url */
         let orderId = orderDetails.orderId;
         console.log(orderId);
+        /* Redirecting user on the confirmation page and adding orderId in the url */
         window.location.href= `./confirmation.html?id=${orderId}`;
+        /* Clearing the cart */
         clearCart()
     })
     .catch((error) => {
+        /* Displaying an error message if the request sent to API is not successfully completed */
         console.log("L'envoi du formulaire à l'API a rencontré un problème" + error)
     })
 })

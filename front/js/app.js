@@ -107,7 +107,7 @@ function modifyTotalPrice(product, oldQuantity, newQuantity){
 
 /********** FORM INPUTS VALIDITY MESSAGE DISPLAY **********/
 
-/* Creating a function to check validity of the text inputs (firstName, LastName, city) and display a message (succes or error) */
+/* Creating a function to check validity of the text inputs (firstName, LastName) and display a message (succes or error) */
 function textValidity(input){
     let nameRegExp = /^[a-zéèôöîïûùü' -]{2,50}/gi;
     let test = nameRegExp.test(input.value);
@@ -118,6 +118,7 @@ function textValidity(input){
     }
 }
 
+/* Creating a function to check validity of the text/number inputs (City) and display a message (succes or error) */
 function cityValidity(input){
     let cityRegExp = /^[0-9]{5}[a-zéèôöîïûùü' -]{2,50}$/gi;
     let test = cityRegExp.test(input.value);
