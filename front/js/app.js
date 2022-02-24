@@ -40,12 +40,19 @@ function removeFromCart(product){
     let cart = getCart();
     /* Filtering cart to keep only the products of which the id is different from the id of the product that we want to remove OR the products with a different color */
     cart = cart.filter(p => p.id != product.id || p.color != product.color);
-    /* Desplaying an alert to inform the user that the product has been removed */
-    alert("L'article a été retiré de votre panier");
     /* Saving the modified cart using the saveCart function */
     saveCart(cart);
     /* Reloading the page after deletion of the product */
-    document.location.reload();
+}
+
+/* Creating a function to clear the cart when order form is submitted */
+function clearCart(){
+    /* Retrieving of cart with the getCart function */
+    let cart = getCart();
+    /* Removing each product in the cart with the removeFromCart function */
+    for(let product of cart){
+        removeFromCart(product)
+    }
 }
 
 /* Creating a function to get the total amount of products in the cart */

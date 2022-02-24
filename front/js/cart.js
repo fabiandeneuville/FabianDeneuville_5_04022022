@@ -106,6 +106,10 @@ for (let product of cart){
         /* Using the event listener to execute the removeFromCart action when the delete button is clicked on */
         productDeleteButton.addEventListener("click", function(){
             removeFromCart(product);
+            /* Desplaying an alert to inform the user that the product has been removed */
+            alert("L'article a été retiré de votre panier");
+            /* Reloading the page */
+            document.location.reload();
         });
 
         /********** DISPLAYING TOTAL AMOUNT OF PRODUCTS ON THE CART PAGE **********/ 
@@ -217,6 +221,7 @@ form.addEventListener("submit", (event) => {
         let orderId = orderDetails.orderId;
         console.log(orderId);
         window.location.href= `./confirmation.html?id=${orderId}`;
+        clearCart()
     })
     .catch((error) => {
         console.log("L'envoi du formulaire à l'API a rencontré un problème" + error)
