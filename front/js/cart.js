@@ -5,6 +5,12 @@ let cart = getCart();
 
 /* Searching in the document for the element that will contain the cart details */
 const cartList = document.getElementById("cart__items")
+
+/* Searching in the document for the elements that contain totals and order form */
+const cartHeading = document.querySelector("h1");
+const totalDisplay = document.querySelector(".cart__price p");
+const orderForm = document.querySelector(".cart__order");
+
 /* Searching in the document for the elements that will display total price and total quantity of products in cart */
 let totalProductsQuantity = document.getElementById("totalQuantity");
 let totalPrice = document.getElementById("totalPrice");
@@ -141,18 +147,20 @@ for (let product of cart){
         cartErrorMessage.style.textAlign = "center";
         cartErrorMessage.style.padding = "15px";
         cartList.appendChild(cartErrorMessage);
+        /* Changing the text in totals element and removing order form from page */
+        totalDisplay.textContent = "Il est impossible de procéder à la commande pour le moment. Nous vous invitons à réessayer ultérieurement";
+        totalDisplay.style.textAlign = "center";
+        orderForm.style.display = "none";
     })
 }
 
 /********** CHANGING PAGE STRUCTURE WHEN THE CART IS EMPTY **********/ 
 
-/* Searching in the document for the elements that contain totals and order form */
-const totalDisplay = document.querySelector(".cart__price p");
-const orderForm = document.querySelector(".cart__order");
-
-/* Checking cart length. If the cart is empty : changing the text in totals element and removing order form from page */
+/* Checking cart length. If the cart is empty : changing the heading, the text in totals element and removing order form from page */
 if(cart.length === 0){
-    totalDisplay.innerHTML = "Votre panier est vide.<br><a href=\"./index.html\">Consulter notre catalogue</a>"
+    cartHeading.textContent = "Votre panier est vide"
+    totalDisplay.innerHTML = "<a href=\"./index.html\">Consulter notre catalogue</a>";
+    totalDisplay.style.textAlign = "center";
     orderForm.style.display = "none";
 }
 
