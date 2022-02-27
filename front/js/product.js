@@ -1,6 +1,6 @@
 /********** DESPLAYING PRODUCT ELEMENTS ON THE PRODUCT PAGE **********/
 
-/* Searching in the document for the elements that will contain the product details (name, description, price, image, color options ...) */
+/* Retrieving of the elements that will contain the product details (name, description, price, image, color options ...) */
 const itemPresentation = document.querySelector(".item");
 const itemContent = document.querySelector("article");
 const itemImgContainer = document.querySelector(".item__img");
@@ -9,22 +9,21 @@ const itemPrice = document.getElementById("price");
 const itemDescription = document.getElementById("description");
 const itemColor = document.getElementById("colors");
 
-/* Exctracting product Id from document URL */
+/* Exctracting product Id from document URL and testing if the extraction succeded */
 let params = new URL(document.location).searchParams;
 let productId = params.get("id");
-/* Testing if the extraction succeded */
 console.log(
   `Récupération de l'id du produit ayant enregistré le clic sur la page d'accueil : ${productId}`
 );
 
-/* Connecting to the API with fetch()*/
+/* Sending HTTP request to the API with fetch() */
 fetch(`http://localhost:3000/api/products/${productId}`)
-  /* If the connection to the API is successfull */
+  /* If the request is successfull */
   /* Returning the response in a JSON format */
   .then((response) => response.json())
   /* Defining API response as productDetails and setting action to be executed */
   .then((productDetails) => {
-    /* creating productImg (img) element, setting src and alt attributes and declaring it as child of the itemImgContainer element*/
+    /* Creating productImg (img) element, setting src and alt attributes and declaring it as child of the itemImgContainer element*/
     let productImg = document.createElement("img");
     productImg.setAttribute("src", productDetails.imageUrl);
     productImg.setAttribute("alt", productDetails.altTxt);
@@ -51,8 +50,8 @@ fetch(`http://localhost:3000/api/products/${productId}`)
       itemColor.appendChild(colorOption);
     }
   })
-  /* If the connection to the API has failed or is interrupted */
-  /* Creating a message to be uploaded in the item element to inform the final users that something went wrong */
+  /* If the request has failed */
+  /* Creating a message to be uploaded in the item element to inform the user that something went wrong */
   .catch((error) => {
     console.log(
       "Il y a eu une erreur dans le chargement du produit sur le site." + error
@@ -68,10 +67,10 @@ fetch(`http://localhost:3000/api/products/${productId}`)
 
 /********** ADDING PRODUCT TO THE CART **********/
 
-/* Searching in the document for the addToCart button and assigning it in a constant named addToCartBtn */
+/* Retrieving of the addToCart button and assigning it in a constant named addToCartBtn */
 const addToCartBtn = document.getElementById("addToCart");
 
-/* Selecting the #quantity and #colors elements and assigining them into variables*/
+/* Retrieving of the #quantity and #colors elements and assigining them into variables*/
 let quantity = document.getElementById("quantity");
 let color = document.getElementById("colors");
 
@@ -82,8 +81,7 @@ addToCartBtn.addEventListener("click", () => {
   let quantityPicked = Number(quantity.value);
   /* Retrieving of product name */
   let productName = document.getElementById("title").textContent;
-  console.log(productName);
-  /* Creating product to be uploaded into cart */
+  /* Creating product object to be uploaded into cart */
   let product = {
     id: productId,
     color: colorPicked,

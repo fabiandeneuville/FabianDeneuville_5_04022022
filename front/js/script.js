@@ -1,23 +1,22 @@
 /********** DISPLAYING PRODUCTS ON THE INDEX PAGE **********/
 
-/* Searching in the document for the element that will contain the products and assigning it in a constant named itemsList */
-const itemsList = document.getElementById("items");
+/* Retrieving of the element that will contain the products and assigning it in a constant named productsList */
+const productsList = document.getElementById("items");
 
-/* Connecting to the API with fetch() */
+/* Sending HTTP request to the API with fetch() */
 fetch("http://localhost:3000/api/products")
-  /* If the connection to the API is successfull */
-  /* Returning the response in a JSON format */
+  /* If the request is successfull, returning the response in a JSON format */
   .then((response) => response.json())
-  /* Defining API response as Products and setting action to be executed */
+  /* Defining API response as products and setting action to be executed */
   .then((products) => {
     /* Browsing the data returned by the API with a for loop */
     for (let i = 0; i < products.length; i++) {
-      /* Creating productLink (a) element, setting href attribute and defining it as child of the itemsList element */
+      /* Creating productLink (a) element, setting href attribute and declaring it as child of the productsList element */
       let productLink = document.createElement("a");
       productLink.setAttribute("href", `product.html?id=${products[i]._id}`);
-      itemsList.appendChild(productLink);
+      productsList.appendChild(productLink);
 
-      /* Creating productArticle (article) element and defining it as child of the productLink element */
+      /* Creating productArticle (article) element and declaring it as child of the productLink element */
       let productArticle = document.createElement("article");
       productLink.appendChild(productArticle);
 
@@ -40,8 +39,8 @@ fetch("http://localhost:3000/api/products")
       productArticle.appendChild(productDescription);
     }
   })
-  /* If the connection to the API has failed*/
-  /* Creating a message to be uploaded in the itemsList element to inform the final users that something went wrong */
+  /* If the request has failed */
+  /* Creating a message to be uploaded in the productsList element to inform the user that something went wrong */
   .catch((error) => {
     console.log("Le chargement des produits a rencontré un problème." + error);
     let errorMessage = document.createElement("h2");
@@ -49,5 +48,5 @@ fetch("http://localhost:3000/api/products")
       "Nous rencontrons des difficultés techniques et ne pouvons pas vous présenter les articles pour le moment. Nos équipes sont à l'oeuvre pour résoudre ce problème dans les plus brefs délais. Nous vous invitons à réessayer ultérieurement et nous excusons pour la gêne occasionnée.";
     errorMessage.style.textAlign = "center";
     errorMessage.style.padding = "15px";
-    itemsList.appendChild(errorMessage);
+    productsList.appendChild(errorMessage);
   });

@@ -1,19 +1,20 @@
 /********** DISPLAYING CART CONTENT ON THE CART PAGE **********/
 
-/* Retrieving of cart with the getCart function and assigning the content into a variable */
+/* Retrieving of cart with the getCart function */
 let cart = getCart();
 
-/* Searching in the document for the element that will contain the cart details */
+/* Retrieving of the element that will contain the cart details */
 const cartList = document.getElementById("cart__items");
 
-/* Searching in the document for the elements that contain totals and order form */
+/* Retrieving of the elements that will contain totals and order form */
 const cartHeading = document.querySelector("h1");
 const totalDisplay = document.querySelector(".cart__price p");
 const orderForm = document.querySelector(".cart__order");
 
-/* Searching in the document for the elements that will display total price and total quantity of products in cart */
+/* Retrieving of the elements that will display total price and total quantity of products in cart */
 let totalProductsQuantity = document.getElementById("totalQuantity");
 let totalPrice = document.getElementById("totalPrice");
+/* Initializing totalCartPrice that will be updated later with the result returned by the getTotalPrice function*/
 let totalCartPrice = 0;
 
 /* Browsing the cart with a for of loop */
@@ -23,7 +24,7 @@ for (let product of cart) {
   let productColor = product.color;
   let productQuantity = product.quantity;
   let productName = product.name;
-  /* Connecting to the API with fetch() to get the product details */
+  /* Sending HTTP request to the API with fetch() to get the product details */
   fetch(`http://localhost:3000/api/products/${productId}`)
     /* Returning the response in a JSON format */
     .then((response) => response.json())
@@ -149,7 +150,7 @@ for (let product of cart) {
         totalProductsQuantity.textContent = getNumberOfProducts();
       });
     })
-    /* If the connection to the API has failed or is interrupted, creating a message to be uploaded for each product to inform the final users that something went wrong */
+    /* If the request to the API has failed, creating a message to be uploaded for each product to inform the user that something went wrong */
     .catch((error) => {
       console.log("Erreur dans le chargement du panier" + error);
       let cartErrorMessage = document.createElement("h2");
@@ -178,7 +179,7 @@ if (cart.length === 0) {
 
 /********** ORDER FORM MANAGEMENT **********/
 
-/* Searching in the document for form and submit button elements */
+/* Retrieving of form and submit button elements */
 let form = document.querySelector(".cart__order__form");
 let submitButton = document.querySelector("#order");
 

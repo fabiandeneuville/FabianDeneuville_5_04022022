@@ -22,10 +22,7 @@ function addToCart(product) {
   /* Retrieving of cart with the getCart function */
   let cart = getCart();
   /* Checking if a product with identical id AND identical color is already in the cart */
-  let productFound = cart.find(
-    (productFound) =>
-      productFound.id === product.id && productFound.color === product.color
-  );
+  let productFound = cart.find((p) => p.id === product.id && p.color === product.color);
   /* If YES, adjusting product quantity by adding the new quantity declared to it */
   if (productFound != undefined) {
     productFound.quantity += product.quantity;
@@ -45,7 +42,6 @@ function removeFromCart(product) {
   cart = cart.filter((p) => p.id != product.id || p.color != product.color);
   /* Saving the modified cart using the saveCart function */
   saveCart(cart);
-  /* Reloading the page after deletion of the product */
 }
 
 /* Creating a function to clear the cart when order form is submitted */
@@ -86,9 +82,7 @@ function modifyQuantity(product, quantity) {
   /* Retrieving of cart */
   let cart = getCart();
   /* Checking if a product with identical id AND identical color is already in the cart */
-  let productFound = cart.find(
-    (p) => p.id == product.id && p.color == product.color
-  );
+  let productFound = cart.find((p) => p.id == product.id && p.color == product.color);
   /* If YES, setting the quantity of the product with the new quantity */
   if (productFound != undefined) {
     productFound.quantity = quantity;
