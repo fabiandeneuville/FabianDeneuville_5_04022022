@@ -55,9 +55,7 @@ for (let product of cart) {
 
       /* Creating the productContentDescription element, adding the cart__item__content__description class and defining it as child of the productContent element */
       let productContentDescription = document.createElement("div");
-      productContentDescription.classList.add(
-        "cart__item__content__description"
-      );
+      productContentDescription.classList.add("cart__item__content__description");
       productContent.appendChild(productContentDescription);
 
       /* Creating the productName element, inserting text content and defining it as child of the productContentDescription element */
@@ -82,9 +80,7 @@ for (let product of cart) {
 
       /* Creating the productQuantitySettings element, adding the cart__item__content__settings__quantity class and defining it as child of the productContentSettings element */
       let productQuantitySettings = document.createElement("div");
-      productQuantitySettings.classList.add(
-        "cart__item__content__settings__quantity"
-      );
+      productQuantitySettings.classList.add("cart__item__content__settings__quantity");
       productContentSettings.appendChild(productQuantitySettings);
 
       /* Creating the productQuantityPickedLabel element, inserting text content and defining it as child of the productQuantitySettings element */
@@ -134,16 +130,9 @@ for (let product of cart) {
       /* Listening to change event on the quantity input and setting action de be executed */
       productQuantityPicked.addEventListener("change", () => {
         /* Defining new product quantity using the modifyQuantity function - Cart to be saved during this step with the modifyQuantity function */
-        productQuantity = modifyQuantity(
-          product,
-          Number(productQuantityPicked.value)
-        );
+        productQuantity = modifyQuantity(product,Number(productQuantityPicked.value));
         /* Using the modifyTotalPrice function to calculate the new price for each item, according to the quantity variation */
-        totalPrice.textContent = modifyTotalPrice(
-          productDetails,
-          oldQuantity,
-          Number(productQuantityPicked.value)
-        );
+        totalPrice.textContent = modifyTotalPrice(productDetails,oldQuantity,Number(productQuantityPicked.value));
         /* Defining (new) current quantity picked as old quantity for later use on change event */
         oldQuantity = Number(productQuantityPicked.value);
         /* Retrieving total quantity in the cart using the getNumberOfProduct function */
@@ -159,8 +148,7 @@ for (let product of cart) {
       cartErrorMessage.style.padding = "15px";
       cartList.appendChild(cartErrorMessage);
       /* Changing the text in totals element and removing order form from page */
-      totalDisplay.textContent =
-        "Il est impossible de procéder à la commande pour le moment. Nous vous invitons à réessayer ultérieurement";
+      totalDisplay.textContent = "Il est impossible de procéder à la commande pour le moment. Nous vous invitons à réessayer ultérieurement";
       totalDisplay.style.textAlign = "center";
       orderForm.style.display = "none";
     });
@@ -171,8 +159,7 @@ for (let product of cart) {
 /* Checking cart length. If the cart is empty : changing the heading, the text in totals element and removing order form from page */
 if (cart.length === 0) {
   cartHeading.textContent = "Votre panier est vide";
-  totalDisplay.innerHTML =
-    '<a href="./index.html">Consulter notre catalogue</a>';
+  totalDisplay.innerHTML ='<a href="./index.html">Consulter notre catalogue</a>';
   totalDisplay.style.textAlign = "center";
   orderForm.style.display = "none";
 }
@@ -254,8 +241,6 @@ form.addEventListener("submit", (event) => {
     })
     .catch((error) => {
       /* Displaying an error message if the request sent to API is not successfully completed */
-      console.log(
-        "L'envoi du formulaire à l'API a rencontré un problème" + error
-      );
+      console.log("L'envoi du formulaire à l'API a rencontré un problème" + error);
     });
 });

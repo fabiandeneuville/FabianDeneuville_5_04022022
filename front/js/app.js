@@ -113,8 +113,7 @@ function textValidity(input) {
   if (test == true) {
     input.nextElementSibling.textContent = "Champ valide";
   } else {
-    input.nextElementSibling.textContent =
-      "Vous ne pouvez utiliser que des lettres, espaces, - et ' ";
+    input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des lettres, espaces, - et ' ";
   }
 }
 
@@ -125,8 +124,7 @@ function cityValidity(input) {
   if (test == true) {
     input.nextElementSibling.textContent = "Champ valide";
   } else {
-    input.nextElementSibling.textContent =
-      "Veuillez respecter le format CODE POSTAL (5 CHIFFRES) suivi du nom de la VILLE. Exemple : 75012 Paris";
+    input.nextElementSibling.textContent = "Veuillez respecter le format CODE POSTAL (5 CHIFFRES) suivi du nom de la VILLE. Exemple : 75012 Paris";
   }
 }
 
@@ -137,8 +135,7 @@ function adressValidity(input) {
   if (test == true) {
     input.nextElementSibling.textContent = "Champ valide";
   } else {
-    input.nextElementSibling.textContent =
-      "Vous ne pouvez utiliser que des chiffres, lettres, espaces, - et ' ";
+    input.nextElementSibling.textContent = "Vous ne pouvez utiliser que des chiffres, lettres, espaces, - et ' ";
   }
 }
 
@@ -149,7 +146,6 @@ function emailValidity(input) {
   if (test === true) {
     input.nextElementSibling.textContent = "Champ valide";
   } else {
-    input.nextElementSibling.textContent =
-      "Veuillez saisir une adresse email valide";
+    input.nextElementSibling.textContent = "Veuillez saisir une adresse email valide";
   }
 }

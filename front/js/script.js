@@ -44,8 +44,7 @@ fetch("http://localhost:3000/api/products")
   .catch((error) => {
     console.log("Le chargement des produits a rencontré un problème." + error);
     let errorMessage = document.createElement("h2");
-    errorMessage.textContent =
-      "Nous rencontrons des difficultés techniques et ne pouvons pas vous présenter les articles pour le moment. Nos équipes sont à l'oeuvre pour résoudre ce problème dans les plus brefs délais. Nous vous invitons à réessayer ultérieurement et nous excusons pour la gêne occasionnée.";
+    errorMessage.textContent = "Nous rencontrons des difficultés techniques et ne pouvons pas vous présenter les articles pour le moment. Nos équipes sont à l'oeuvre pour résoudre ce problème dans les plus brefs délais. Nous vous invitons à réessayer ultérieurement et nous excusons pour la gêne occasionnée.";
     errorMessage.style.textAlign = "center";
     errorMessage.style.padding = "15px";
     productsList.appendChild(errorMessage);

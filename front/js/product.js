@@ -12,9 +12,7 @@ const itemColor = document.getElementById("colors");
 /* Exctracting product Id from document URL and testing if the extraction succeded */
 let params = new URL(document.location).searchParams;
 let productId = params.get("id");
-console.log(
-  `Récupération de l'id du produit ayant enregistré le clic sur la page d'accueil : ${productId}`
-);
+console.log(`Récupération de l'id du produit ayant enregistré le clic sur la page d'accueil : ${productId}`);
 
 /* Sending HTTP request to the API with fetch() */
 fetch(`http://localhost:3000/api/products/${productId}`)
@@ -53,13 +51,10 @@ fetch(`http://localhost:3000/api/products/${productId}`)
   /* If the request has failed */
   /* Creating a message to be uploaded in the item element to inform the user that something went wrong */
   .catch((error) => {
-    console.log(
-      "Il y a eu une erreur dans le chargement du produit sur le site." + error
-    );
+    console.log("Il y a eu une erreur dans le chargement du produit sur le site." + error);
     itemPresentation.removeChild(itemContent);
     let productErrorMessage = document.createElement("h2");
-    productErrorMessage.textContent =
-      "Nous rencontrons des difficultés techniques pour afficher l'article que vous avez sélectionné. Nos équipes sont à l'oeuvre pour résoudre ce problème dans les plus brefs délais. Nous vous invitons à réessayer ultérieurement et nous excusons pour la gêne occasionnée.";
+    productErrorMessage.textContent = "Nous rencontrons des difficultés techniques pour afficher l'article que vous avez sélectionné. Nos équipes sont à l'oeuvre pour résoudre ce problème dans les plus brefs délais. Nous vous invitons à réessayer ultérieurement et nous excusons pour la gêne occasionnée.";
     productErrorMessage.style.textAlign = "center";
     productErrorMessage.style.padding = "15px";
     itemPresentation.appendChild(productErrorMessage);
@@ -93,13 +88,9 @@ addToCartBtn.addEventListener("click", () => {
     IF NOT : displaying an alert */
   if (color.value !== "" && quantity.value > 0 && quantity.value <= 100) {
     addToCart(product);
-    alert(
-      "Votre choix a bien été effectué et votre article a été ajouté à votre panier."
-    );
+    alert("Votre choix a bien été effectué et votre article a été ajouté à votre panier.");
   } else {
     /* If a color or the quantity is not picked : displaying an error message as alert */
-    alert(
-      "Veuillez sélectionner une couleur et indiquer la quantité souhaitée. Attention, la quantité maximale est fixée à 100 articles."
-    );
+    alert("Veuillez sélectionner une couleur et indiquer la quantité souhaitée. Attention, la quantité maximale est fixée à 100 articles.");
   }
 });
