@@ -86,10 +86,12 @@ function modifyQuantity(product, quantity) {
   /* If YES, setting the quantity of the product with the new quantity */
   if (productFound != undefined) {
     productFound.quantity = quantity;
+    /* If new quantity <= 0, removing product from cart and reloading page */
     if(quantity <= 0){
       removeFromCart(productFound);
       document.location.reload();
       alert("L'article a été retiré de votre panier");
+     /* If new quantity > 100, displaying an error message and reloading page */
     }else if(quantity > 100){
       document.location.reload();
       alert("La quantité est limitée à 100 pièces");
