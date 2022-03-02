@@ -88,8 +88,8 @@ function modifyQuantity(product, quantity) {
     productFound.quantity = quantity;
     /* If new quantity <= 0, removing product from cart and reloading page */
     if(quantity <= 0){
-      removeFromCart(productFound);
       document.location.reload();
+      removeFromCart(productFound);
       alert("L'article a été retiré de votre panier");
      /* If new quantity > 100, displaying an error message and reloading page */
     }else if(quantity > 100){
