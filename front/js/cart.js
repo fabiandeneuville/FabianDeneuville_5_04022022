@@ -234,10 +234,14 @@ form.addEventListener("submit", (event) => {
       /* Getting the orderId element from the API response and asigning it into a variable for later use in the url */
       let orderId = orderDetails.orderId;
       console.log(orderId);
-      /* Redirecting user on the confirmation page and adding orderId in the url */
-      window.location.href = `./confirmation.html?id=${orderId}`;
-      /* Clearing the cart */
-      clearCart();
+      if(orderId){
+        /* Redirecting user on the confirmation page and adding orderId in the url */
+        window.location.href = `./confirmation.html?id=${orderId}`;
+        /* Clearing the cart */
+        clearCart();
+      }else{
+        alert("Il semble y avoir un problème. Veuillez ré-essayer ultérieurement")
+      }
     })
     .catch((error) => {
       /* Displaying an error message if the request sent to API is not successfully completed */
