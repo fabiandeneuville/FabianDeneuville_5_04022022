@@ -1,20 +1,20 @@
-# Kanap #
+# FORMATION DEVELOPPEUR WEB - OPEN CLASSROOMS - PROJET 5 #
+# Construction d'un site e-commerce en JavaScript #
 
-This is the front end and back end server for Project 5 of the Web Developer path.
+![logo kanap](https://user-images.githubusercontent.com/94392055/157097569-aec7f67a-da7e-4dde-a51e-30dbf0a3d16b.png)
 
-### Back end Prerequisites ###
+### PRÉREQUIS TECHNIQUES POUR UTILISER LE SERVEUR ###
 
-You will need to have Node and `npm` installed locally on your machine.
+Il est nécessaire d'avoir Node et npm d'installés en local sur la machine.
 
-### Back end Installation ###
+<hr>
 
-Clone this repo. From the "back" folder of the project, run `npm install`. You 
-can then run the server with `node server`. 
-The server should run on `localhost` with default port `3000`. If the
-server runs on another port for any reason, this is printed to the
-console when the server starts, e.g. `Listening on port 3001`.
+### INSTALLATION DU BACK END ###
 
-# P5 – CONSTRUCTION D'UN SITE E-COMMERCE EN JAVASCRIPT #
+Clonez ce dépôt. Depuis le dossier "back" du projet, exécutez `npm install`. Vous pourrez alors lancer le serveur avec la commande `node server`.
+Le serveur doit fonctionner sur `localhost` avec le port par défaut `3000`. Si le serveur s'exécute sur un autre port pour une raison quelconque, l'information sera indiquée dans le terminal.
+
+<hr>
 
 ### CONTEXTE ###
 
@@ -30,6 +30,8 @@ Notre mission consiste en :
 
 - Le codage du parcours client, depuis la page de résultat jusqu’à la validation du panier
 
+<hr>
+
 ### ARCHITECTURE GÉNÉRALE ###
 
 Le site web se compose de 4 pages :
@@ -42,6 +44,8 @@ Le site web se compose de 4 pages :
 
 - Une page de confirmation qui indique à l’utilisateur son numéro de commande
 
+<hr>
+
 ### CONTRAINTES TECHNIQUES ###
 
 - Aucun Framework JS ne doit être utilisé
@@ -51,6 +55,8 @@ Le site web se compose de 4 pages :
 - Le prix des articles ne doit pas être stocké dans le Local Storage
 
 - Les données saisies dans le formulaire de contact doivent être validées avant envoi
+
+<hr>
 
 ### PRESENTATION DES DIFFÉRENTS FICHIERS ###
 
@@ -63,6 +69,8 @@ Le site web se compose de 4 pages :
 - Un fichier cart.js pour la gestion du panier (stockage, ajout, suppression, modification d’une quantité) et la validation du formulaire
 
 - Un fichier confirmation.js pour la confirmation de la commande et la fourniture du numéro de commande à l’utilisateur
+
+<hr>
 
 ### CONCEPTS ET TECHNIQUES JS MIS EN PRATIQUES ###
 
@@ -77,6 +85,8 @@ Le site web se compose de 4 pages :
 - Validation des données du formulaire à l’aide de regex 
 
 - Envoi des données à l’API avec fetch() – méthode POST
+
+<hr>
 
 ### TESTS ###
 
